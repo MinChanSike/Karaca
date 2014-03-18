@@ -36,35 +36,36 @@
 
 <div class="container">
     <div class="row vertical-center-row">
-
-        <div id="loginarea">
-            <h6>Kullanıcı Girişi</h6>
-            <hr/>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="image">
-                        <img src="asset/img/loginavatar.png" class="img-responsive img-rounded" />
+        <form action="index.html" method="post" >
+            <div id="loginarea">
+                <h6>Kullanıcı Girişi</h6>
+                <hr/>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="image">
+                            <img src="asset/img/loginavatar.png" class="img-responsive img-rounded" />
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="username">Kullanıcı Adı</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Kullanıcı Adı" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Şifre</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Şifre" required />
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <label for="username">Kullanıcı Adı</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Kullanıcı Adı">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Şifre</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Şifre">
+                <hr/>
+                <div class="row">
+                    <div class="col-md-10"></div>
+                    <div class="col-md-2">
+                        <input type="submit" class="btn btn-success" value="Giriş">
                     </div>
                 </div>
             </div>
-            <hr/>
-            <div class="row">
-                <div class="col-md-10"></div>
-                <div class="col-md-2">
-                    <input type="submit" class="btn btn-success" value="Giriş">
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 
