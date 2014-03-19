@@ -74,15 +74,51 @@ a:hover {
       ul {
         padding:0px;
         margin:0px;
+        position: relative;
+        left: 0px;
+        li {
+
+          ul {
+            transition:all ease-in-out 0.4s;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 9999;
+            position: absolute;
+            background: #000;
+            left: 0px;
+            width: 100%;
+            padding:0px;
+            margin:0px;
+            li {
+              line-height: 30px;
+              a {
+                padding-left: 15px;
+                display: block;
+              }
+              a:hover {
+                background: #91C46B;
+                color:#000;
+
+              }
+            }
+          }
+          &:hover ul {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
       }
-      padding-left:15px;
       a {
         font-size:13px;
         color:#efefef;
-        span {
-          margin-left:10px;
+      }
+      a.ta {
+        padding-left: 15px;
+        i {
+          font-size: 20px;
+          padding-left: 5px;
+          line-height: 60px;
         }
-
       }
 
     }
@@ -108,6 +144,7 @@ a:hover {
       background: #91C46B;
       height: 100%;
       ul {
+
         li {
           position: relative;
           display: block;
