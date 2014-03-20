@@ -24,6 +24,15 @@ Core = {
             data:data,
             success:function(deger){callback(deger);}
         });
+    },
+    createID:function(){
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 5; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
     }
 }
 
@@ -45,10 +54,18 @@ dTable = {
     dedectTable:function(){
         $(".dtable").each(function(){
             var isAjax = $(this).attr("data-table-ajax");
-
-
-            $(this).dataTable();
+            var Dtablem = $(this).dataTable();
+            dTable.changeContentFilter(Dtablem);
         });
+    },
+    changeContentFilter:function(oTable){
+        $("tfoot th").each( function ( i ) {
+            this.innerHTML = fnCreateSelect( oTable.fnGetColumnData(i) );
+            $('select', this).change( function () {
+                oTable.fnFilter( $(this).val(), i );
+            } );
+        } );
+        Core.initChosen();
     }
 }
 
