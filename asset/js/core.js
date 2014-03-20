@@ -2,12 +2,18 @@ Core = {
     init:function(){
         $(document).ready(function(){
             Core.initChosen();
+            Core.initDatePicker();
             Fjax.dedectModal();
             dTable.dedectTable();
         });
     },
     initChosen:function(){
         $(".select").chosen();
+    },
+    initDatePicker:function(){
+        $(".datepicker").datepicker({
+            format: 'mm-dd-yyyy'
+        });
     },
     getApiPost:function(route,data,callback){
         $.ajax({
