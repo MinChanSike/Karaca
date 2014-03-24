@@ -59,6 +59,7 @@ cPlugins = {
         });
     },
     initAutoComplete:function(){
+        $(".autocomplete").attr('autocomplete', 'off');
         $('.autocomplete').each(function(){
             var source = $(this).attr("data-source");
             if (typeof ac_siteURL != 'undefined') {
