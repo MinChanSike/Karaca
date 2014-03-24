@@ -47,14 +47,16 @@ cPlugins = {
         });
     },
     initMask:function(){
-        $(".datepicker").mask("99/99/9999");
+        $(".dpform").mask("99/99/9999");
         $(".telefon").mask("(999) 999-9999");
     },
 
     initDatePicker:function(){
-        $(".datepicker").each(function(){
+        $(".dpform").each(function(){
             $(this).datepicker({
                 format: 'mm/dd/yyyy'
+            }).on("changeDate",function(){
+                $(".datepicker").hide();
             });
         });
     },
