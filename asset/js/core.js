@@ -55,8 +55,6 @@ cPlugins = {
         $(".dpform").each(function(){
             $(this).datepicker({
                 format: 'mm/dd/yyyy'
-            }).on("changeDate",function(){
-                $(".datepicker").hide();
             }).blur(function(){
                 $(".datepicker").hide();
             })
