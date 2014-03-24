@@ -1,18 +1,9 @@
 Core = {
     init:function(){
         $(document).ready(function(){
-            Core.initChosen();
-            Core.initDatePicker();
+            cPlugins.initAll();
             Fjax.dedectModal();
             dTable.dedectTable();
-        });
-    },
-    initChosen:function(){
-        $(".select").chosen();
-    },
-    initDatePicker:function(){
-        $(".datepicker").datepicker({
-            format: 'mm-dd-yyyy'
         });
     },
     getApiPost:function(route,data,callback){
@@ -43,6 +34,38 @@ Core = {
 }
 
 
+cPlugins = {
+    initAll:function(){
+        cPlugins.initChosen();
+        cPlugins.initDatePicker();
+        cPlugins.initAutoComplete();
+    },
+    initChosen:function(){
+        $(".select").chosen();
+    },
+    initDatePicker:function(){
+        $(".datepicker").datepicker({
+            format: 'mm-dd-yyyy'
+        });
+    },
+    initAutoComplete:function(){
+        $('.autocomplete').each(function(){
+            var source = $(this).attr("data-source");
+            if(source){
+                $(this).typeahead({
+                    source: function (query, process) {
+                        return $.get(source, { query: query }, function (data) {
+                            return process(data.options);
+                        });
+                    }
+                });
+            }else{
+                console.warn("autocomplete için data-source belirtilmemiş");
+            }
+        });
+    }
+}
+
 Fjax = {
     dedectModal:function(){
         $("a.modalfjax").each(function(){
@@ -71,7 +94,7 @@ dTable = {
                 oTable.fnFilter( $(this).val(), i );
             } );
         } );
-        Core.initChosen();
+        cPlugins.initChosen();
     }
 }
 
