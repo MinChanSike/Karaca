@@ -53,7 +53,7 @@ cPlugins = {
             var source = $(this).attr("data-source");
 
             if (typeof ac_siteURL != 'undefined') {
-                source = siteURL + source;
+                source = ac_siteURL+ source;
             }
             if(source){
                 $(this).typeahead({
