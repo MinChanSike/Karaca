@@ -51,6 +51,10 @@ cPlugins = {
     initAutoComplete:function(){
         $('.autocomplete').each(function(){
             var source = $(this).attr("data-source");
+
+            if (typeof ac_siteURL != 'undefined') {
+                source = siteURL + source;
+            }
             if(source){
                 $(this).typeahead({
                     source: function (query, process) {
