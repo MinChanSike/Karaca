@@ -41,17 +41,21 @@ cPlugins = {
         cPlugins.initAutoComplete();
     },
     initChosen:function(){
-        $(".select").chosen();
+        $(".select").each(function(){
+            $(this).chosen();
+        });
     },
     initDatePicker:function(){
-        $(".datepicker").datepicker({
-            format: 'mm-dd-yyyy'
+        $(".datepicker").each(function(){
+            $(this).datepicker({
+                format: 'mm-dd-yyyy'
+            });
         });
+
     },
     initAutoComplete:function(){
         $('.autocomplete').each(function(){
             var source = $(this).attr("data-source");
-
             if (typeof ac_siteURL != 'undefined') {
                 source = ac_siteURL+ source;
             }
