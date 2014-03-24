@@ -39,19 +39,24 @@ cPlugins = {
         cPlugins.initChosen();
         cPlugins.initDatePicker();
         cPlugins.initAutoComplete();
+        cPlugins.initMask();
     },
     initChosen:function(){
         $(".select").each(function(){
             $(this).chosen();
         });
     },
+    initMask:function(){
+        $(".datepicker").mask("99/99/9999");
+        $(".telefon").mask("(999) 999-9999");
+    },
+
     initDatePicker:function(){
         $(".datepicker").each(function(){
             $(this).datepicker({
-                format: 'mm-dd-yyyy'
+                format: 'mm/dd/yyyy'
             });
         });
-
     },
     initAutoComplete:function(){
         $('.autocomplete').each(function(){
