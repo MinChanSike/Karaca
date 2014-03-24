@@ -57,7 +57,9 @@ cPlugins = {
                 format: 'mm/dd/yyyy'
             }).on("changeDate",function(){
                 $(".datepicker").hide();
-            });
+            }).blur(function(){
+                $(".datepicker").hide();
+            })
         });
     },
     initAutoComplete:function(){
@@ -73,6 +75,8 @@ cPlugins = {
                             return process(data.options);
                         });
                     }
+                }).blur(function(){
+                   $(".typeahead").hide();
                 });
             }else{
                 console.warn("autocomplete için data-source belirtilmemiş");
