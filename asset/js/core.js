@@ -47,7 +47,7 @@ cPlugins = {
         });
     },
     initMask:function(){
-        $(".dpform").mask("99/99/9999");
+        $(".tarih").mask("99/99/9999");
         $(".telefon").mask("(999) 999-9999");
     },
 
@@ -55,9 +55,7 @@ cPlugins = {
         $(".dpform").each(function(){
             $(this).datepicker({
                 format: 'mm/dd/yyyy'
-            }).blur(function(){
-                $(".datepicker").hide();
-            })
+            });
         });
     },
     initAutoComplete:function(){
@@ -70,11 +68,13 @@ cPlugins = {
                 $(this).typeahead({
                     source: function (query, process) {
                         return $.get(source, { query: query }, function (data) {
-                            return process(data.options);
+                            if(query.length<=1){window.disdata='';}
+                            if(!window.disdata){
+                                window.disdata=data;
+                                return process(data.options);
+                            }
                         });
                     }
-                }).blur(function(){
-                   $(".typeahead").hide();
                 });
             }else{
                 console.warn("autocomplete için data-source belirtilmemiş");
