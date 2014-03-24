@@ -76,6 +76,7 @@ Fjax = {
             $(this).bind("click",function(){
                 Core.getApiGet($(this).attr("href"),{type:'modal'},function(deger){
                     $("body").append(deger);
+                    cPlugins.initAll();
                 });
                 return false;
             });
@@ -98,7 +99,7 @@ dTable = {
                 oTable.fnFilter( $(this).val(), i );
             } );
         } );
-        cPlugins.initChosen();
+        cPlugins.initAll();
     }
 }
 
