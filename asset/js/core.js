@@ -1,9 +1,23 @@
+$( document ).ajaxStart(function() {
+    NProgress.start();
+});
+
+$( document ).ajaxComplete(function() {
+    NProgress.done();
+});
+
+$(document).ajaxSuccess(function() {
+    NProgress.done();
+});
+
+
 Core = {
     init:function(){
         $(document).ready(function(){
             cPlugins.initAll();
             Fjax.dedectModal();
             dTable.dedectTable();
+            Fjax.dedectConfirm();
         });
     },
     getApiPost:function(route,data,callback){
@@ -95,6 +109,21 @@ Fjax = {
                 return false;
             });
         });
+    },
+    dedectConfirm:function(){
+        $("a.confirm").each(function(){
+            $(this).bind("click",function(){
+                var confirmMessage = $(this).attr("data-message");
+                if(confirmMessage){
+                    if(confirm(confirmMessage)==true){
+                        location.href=$(this).attr("location");
+                    }else{
+                        return false;
+                    }
+                }
+                return false;
+            });
+        });
     }
 }
 
@@ -102,12 +131,48 @@ dTable = {
     dedectTable:function(){
         $(".dtable").each(function(){
             var isAjax = $(this).attr("data-table-ajax");
-            var Dtablem = $(this).dataTable();
-            dTable.changeContentFilter(Dtablem);
+            var source = $(this).attr("data-source");
+            var seriColuns = $(this).attr("data-columns");
+            var seriVals= $(this).attr("data-vals");
+            var customWhere= $(this).attr("data-customwhere");
+
+            var setting = {};
+
+            if(source){
+                setting = {
+                    "bProcessing": true,
+                    "bServerSide": true,
+                    "bDestroy": true,
+                    "sAjaxSource": source,
+                    "fnServerData": function (sSource, aoData, fnCallback) {
+                        aoData.push({"name":"columns","value":seriColuns});
+                        aoData.push({"name":"columnsval","value":seriVals});
+                        aoData.push({"name":"customwhere","value":customWhere});
+                        $.ajax({
+                            "dataType": "json",
+                            "type": "POST",
+                            "url": sSource,
+                            "data": aoData,
+                            "success": fnCallback
+                        }).done(function(){
+                            cPlugins.initAll();
+                            Fjax.dedectModal();
+                            Fjax.dedectConfirm();
+                        });
+                    },
+                    "oLanguage": {
+                        "sUrl": siteURL+'datatable/getlanguagedata'
+                    }
+                };
+            }
+            var Dtablem = $(this).dataTable(setting);
+            //dTable.changeContentFilter(Dtablem);
         });
     },
     changeContentFilter:function(oTable){
-        $("tfoot th").each( function ( i ) {
+        alert('merba');
+        $(".tfoot").each( function ( i ) {
+            alert('selmai');
             this.innerHTML = fnCreateSelect( oTable.fnGetColumnData(i) );
             $('select', this).change( function () {
                 oTable.fnFilter( $(this).val(), i );
