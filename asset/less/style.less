@@ -337,3 +337,53 @@ table.tDefault {
 .dtable thead tr {
   background: darken(#91C46B,8%);
 }
+
+@media screen and (max-height: 300px) {
+
+  .appmenu {
+    width: 60px !important;
+    ul {
+      ul {
+        left:70px !important;
+      }
+    }
+  }
+
+  .appcontent {
+    padding-left:60px !important;
+  }
+
+  ol.breadcrumb {
+    display: none;
+  }
+  #topLine {
+    display: none;
+  }
+  #appContent {
+    height: calc(~'100% - 0.1px') !important;
+    overflow: hidden;
+    top:0px !important;
+    border-top:2px solid #000;
+
+  }
+  .ara {
+    height: 20px !important;
+  }
+  .content {
+    overflow-x:hidden;
+  }
+}
+@media screen and (max-width: 400px) {
+  .appmenu {
+    width: 60px !important;
+    ul {
+      ul {
+        left:70px !important;
+      }
+    }
+  }
+
+  .appcontent {
+    padding-left:60px !important;
+  }
+}
