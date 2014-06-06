@@ -103,12 +103,14 @@ Fjax = {
         $("a.modalfjax").each(function(){
             $(this).bind("click",function(){
                 Core.getApiGet($(this).attr("href"),{type:'modal'},function(deger){
-                    $("body").append(deger);
+                    $("#temp").html(deger);
                     cPlugins.initAll();
+                    dTable.dedectTableModal();
                 });
                 return false;
             });
         });
+
     },
     dedectConfirm:function(){
         $("a.confirm").each(function(){
@@ -116,7 +118,7 @@ Fjax = {
                 var confirmMessage = $(this).attr("data-message");
                 if(confirmMessage){
                     if(confirm(confirmMessage)==true){
-                        location.href=$(this).attr("location");
+                        location.href=$(this).attr("href");
                     }else{
                         return false;
                     }
@@ -128,15 +130,27 @@ Fjax = {
 }
 
 dTable = {
+
     dedectTable:function(){
-        $(".dtable").each(function(){
+        dTable.dedectTableConsole(".dtable");
+    },
+    dedectTableModal:function(){
+        dTable.dedectTableConsole(".modal-dialog .dtable");
+    },
+    dedectTableConsole:function(className){
+        $(className).each(function(){
             var isAjax = $(this).attr("data-table-ajax");
             var source = $(this).attr("data-source");
             var seriColuns = $(this).attr("data-columns");
             var seriVals= $(this).attr("data-vals");
             var customWhere= $(this).attr("data-customwhere");
 
-            var setting = {};
+            var setting = {
+                "oLanguage": {
+                    "sUrl": siteURL+'datatable/getlanguagedata'
+                },
+                "iDisplayLength": 50
+            };
 
             if(source){
                 setting = {
@@ -156,13 +170,13 @@ dTable = {
                             "success": fnCallback
                         }).done(function(){
                             cPlugins.initAll();
-                            Fjax.dedectModal();
                             Fjax.dedectConfirm();
                         });
                     },
                     "oLanguage": {
                         "sUrl": siteURL+'datatable/getlanguagedata'
-                    }
+                    },
+                    "iDisplayLength": 50
                 };
             }
             var Dtablem = $(this).dataTable(setting);
