@@ -18,6 +18,9 @@ Core = {
             Fjax.dedectModal();
             dTable.dedectTable();
             Fjax.dedectConfirm();
+
+
+
         });
     },
     getApiPost:function(route,data,callback){
@@ -54,6 +57,7 @@ cPlugins = {
         cPlugins.initDatePicker();
         cPlugins.initAutoComplete();
         cPlugins.initMask();
+        cPlugins.initTipsy();
     },
     initChosen:function(){
         $(".select").each(function(){
@@ -95,6 +99,12 @@ cPlugins = {
                 console.warn("autocomplete için data-source belirtilmemiş");
             }
         });
+    },
+    initTipsy:function(){
+        $(".tipUst").tipsy({gravity: 's'});
+        $(".tipAlt").tipsy({gravity: 'n'});
+        $(".tipSol").tipsy({gravity: 'e'});
+        $(".tipSag").tipsy({gravity: 'w'});
     }
 }
 
@@ -145,12 +155,14 @@ dTable = {
             var seriVals= $(this).attr("data-vals");
             var customWhere= $(this).attr("data-customwhere");
 
-            var setting = {
-                "oLanguage": {
-                    "sUrl": siteURL+'datatable/getlanguagedata'
-                },
-                "iDisplayLength": 50
-            };
+            if (typeof siteURL != 'undefined'){
+                var setting = {
+                    "oLanguage": {
+                        "sUrl": siteURL+'datatable/getlanguagedata'
+                    },
+                    "iDisplayLength": 50
+                };
+            }
 
             if(source){
                 setting = {
