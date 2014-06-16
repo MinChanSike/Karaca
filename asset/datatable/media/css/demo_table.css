@@ -213,15 +213,15 @@ table.display thead td:active {
  * DataTables row classes
  */
 table.display tr.odd.gradeA {
-	background-color: #ddffdd;
+	background-color: #F7FBFD;
 }
 
 table.display tr.even.gradeA {
-	background-color: #eeffee;
+	background-color: #ECECEC;
 }
 
 table.display tr.odd.gradeC {
-	background-color: #ddddff;
+	background-color: #AABBCC;
 }
 
 table.display tr.even.gradeC {
@@ -401,7 +401,9 @@ tr.even td.sorting_3 {
 	  ee > e2
  */
 tr.odd.gradeA td.sorting_1 {
-	background-color: #c4ffc4;
+	background-color: #F7FBFD;
+    color:#55707D;
+    font-weight: bold;
 }
 
 tr.odd.gradeA td.sorting_2 {
@@ -413,7 +415,9 @@ tr.odd.gradeA td.sorting_3 {
 }
 
 tr.even.gradeA td.sorting_1 {
-	background-color: #d5ffd5;
+	background-color: #ECECEC;
+    color: #6C4C4C;
+    font-weight: bold;
 }
 
 tr.even.gradeA td.sorting_2 {
