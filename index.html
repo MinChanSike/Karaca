@@ -42,6 +42,8 @@
     <script src="asset/js/plugins/bootstrap3-typeahead.min.js"></script>
 
     <script src="asset/js/plugins/bootbox.min.js"></script>
+    <script src="asset/js/plugins/jquery.dlmenu.js"></script>
+
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
@@ -51,7 +53,6 @@
 
 </head>
 <body>
-
     <div id="application">
         <div id="topLine">
             <div class="applogo">
@@ -77,22 +78,48 @@
             </div>
         </div>
         <div id="appContent">
-            <div class="appmenu">
-                <ul>
-                    <li><a href="#"><i class="fa fa-tachometer"></i>Ana sayfa</a></li>
-                    <li><a href="#" class="active"><i class="fa fa-user"></i>Kullanıcılar</a></li>
-                    <li><a href="#"><i class="fa fa-list-alt"></i>Formlar</a>
-                        <ul>
-                            <li><a href="#" class="active">Sub 1</a></li>
-                            <li><a href="#">Sub 2</a></li>
-                            <li><a href="#">Sub 3</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="appcontent">
+
+        <div id="dl-menu" class="dl-menuwrapper">
+            <ul class="dl-menu">
+                <li><a href="#"><i class="fa fa-tachometer"></i>Ana sayfa</a> </li>
+                <li>
+                    <a href="#"><i class="fa fa-user"></i>Kullanıcılar</a>
+                    <ul class="dl-submenu">
+                        <li><a href="#">Kullanıcı Listesi</a></li>
+                        <li><a href="#">Yeni Kullanıcı Oluştur</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Formlar</a>
+                    <ul class="dl-submenu">
+                        <li><a href="#">İçerik 1</a></li>
+                        <li><a href="#">İçerik 2</a></li>
+                        <li><a href="#">İçerik 4</a></li>
+                        <li><a href="#">İçerik 3</a></li>
+                    </ul>
+                </li>
+
+
+            </ul>
+        </div>
+
+            <!--<div class="appmenu dl-menuwrapper">-->
+                <!--<ul id="menu" class="dl-menu">-->
+                    <!--<li><a href="#"><i class="fa fa-tachometer"></i>Ana sayfa</a></li>-->
+                    <!--<li><a href="#" class="active"><i class="fa fa-user"></i>Kullanıcılar</a></li>-->
+                    <!--<li><a href="#"><i class="fa fa-list-alt"></i>Formlar</a>-->
+                        <!--<ul class="dl-submenu">-->
+                            <!--<li><a href="#" class="active">Sub 1</a></li>-->
+                            <!--<li><a href="#">Sub 2</a></li>-->
+                            <!--<li><a href="#">Sub 3</a></li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <div class="appcontent" >
                 <div class="appbreadcrumb">
                     <ol class="breadcrumb">
+                        <li><a class="menuButton" href="#"><i class="fa fa-bars"></i> Menü</a></li>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Library</a></li>
                         <li class="active">Data</li>

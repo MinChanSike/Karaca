@@ -19,6 +19,7 @@ Core = {
             dTable.dedectTable();
             Fjax.dedectConfirm();
 
+            $( '#dl-menu' ).dlmenu();
 
 
         });
@@ -58,7 +59,11 @@ cPlugins = {
         cPlugins.initAutoComplete();
         cPlugins.initMask();
         cPlugins.initTipsy();
+
+
+
     },
+
     initChosen:function(){
         $(".select").each(function(){
             $(this).chosen();

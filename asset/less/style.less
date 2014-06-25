@@ -10,12 +10,13 @@ html, body {height: 100%}
 body {
   padding:0px;
   margin:0px;
-  background-color:#7f8c8d;
+//  background-color:#7f8c8d;
+  background-color:#fff;
   font-family: 'Open Sans', sans-serif;
   font-size:14px;
   overflow-y: hidden;
   position: relative;
-  padding-top:30px;
+  padding-top:10px;
 }
 
 
@@ -37,7 +38,7 @@ a:hover {
 }
 
 #application {
-  width: 95%;
+  width: 99%;
   margin:0px auto;
   .border-radius(4px,0px,0px,4px);
   background: #FFF;
@@ -140,101 +141,30 @@ a:hover {
     overflow-x: hidden;
     position: relative;
     height: calc(~'100% - 70px');
-    .appmenu {
+
+    #dl-menu {
+      z-index: 9999;
       padding-top:5px;
-      width: @leftSide-Width;
+      width: 300px;
       position: absolute;
       left:0px;
-      top:0px;
-      background: #91C46B;
-      height: 100%;
+      top:36px;
       ul {
-
-        li {
-          position: relative;
-          display: block;
-          text-align: center;
-          margin-bottom: 15px;
-          a {
-            color:#30572A;
-            font-size:11px;
-            display: block;
-            i {
-              font-size: 30px;
-              display: block;
-              color:#57893E;
-            }
-            &:hover {
-              text-decoration: none;
-              i {
-                color: #1E2226;
-              }
-              .ok;
-
-            }
-            &.active {
-              i {
-                color:#1E2226 !important;
-              }
-
-            }
+        padding:0px;
+        margin:0px;
+        position: absolute;
+        top:0px;
+        width: 300px;
+        a {
+          i {
+            margin-right:10px;
           }
-           ul {
-             z-index: 1;
-             visibility:hidden;
-             opacity:0;
-             transition:all ease-in-out 0.4s;
-             position: absolute;
-              padding:5px;
-             left:@leftSide-Width + 5;
-             top:-5px;
-             width: @leftSide-Width*1.8;
-             background: #91C46B;
-             .border-radius(4px,4px,4px,4px);
-             .drop-shadow(0,2px);
-             li {
-               padding:0px;
-               margin:0px;
-               text-align: left;
-               background: none !important;
-
-               &:hover {
-                 background-image: none !important;
-               }
-               a {
-                 transition: color 0.5s ease;
-                 transition: background-color 0.5s ease;
-                 display: block;
-                 line-height: 22px;
-                 padding-left:10px;
-                 font-size:14px;
-                 &:hover {
-                   background-color: #F2F2F2 !important;
-                   background-image: none !important;
-                 }
-               }
-               a.active {
-                 background: #57893E;
-                 color:#000;
-               }
-             }
-           }
-          &:hover{
-            .ok;
-            width: 100%;
-            ul {
-              display: block;
-              opacity: 1;
-              visibility: visible;
-
-            }
-          }
-
         }
       }
     }
     .appcontent {
-      padding-left:@leftSide-Width;
+      //padding-left:@leftSide-Width;
+      padding-left:0px;
       overflow: hidden;
       height: 100%;
       .appbreadcrumb {
@@ -349,21 +279,8 @@ table.tDefault {
 
 @media screen and (max-height: 300px) {
 
-  .appmenu {
-    width: 60px !important;
-    ul {
-      ul {
-        left:70px !important;
-      }
-    }
-  }
-
-  .appcontent {
-    padding-left:60px !important;
-  }
-
   ol.breadcrumb {
-    display: none;
+    display: block;
   }
   #topLine {
     display: none;
@@ -383,17 +300,15 @@ table.tDefault {
   }
 }
 @media screen and (max-width: 400px) {
-  .appmenu {
-    width: 60px !important;
-    ul {
-      ul {
-        left:70px !important;
-      }
-    }
-  }
 
-  .appcontent {
-    padding-left:60px !important;
-  }
 }
 
+
+
+.menuButton {
+  font-weight: bold;
+  color:#D9534F;
+}
+
+
+@import "menuCss.less";
