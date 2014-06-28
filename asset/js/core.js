@@ -59,11 +59,21 @@ cPlugins = {
         cPlugins.initAutoComplete();
         cPlugins.initMask();
         cPlugins.initTipsy();
-
-
-
+        cPlugins.initChecbox();
     },
 
+    initChecbox:function(){
+        $(".checkboxcustom").each(function(){$(this).checkbox();});
+        $(".checkboxcustom1").each(function(){$(this).checkbox(
+            {
+                buttonStyle: 'btn-base',
+                buttonStyleChecked: 'btn-success',
+                checkedClass: 'icon-check',
+                uncheckedClass: 'icon-check-empty'
+            }
+        );});
+        $(".checkboxcustom2").each(function(){$(this).checkbox({buttonStyle: 'btn-danger',buttonStyleChecked: 'btn-success',checkedClass: 'icon-check',uncheckedClass: 'icon-check-empty'});});
+    },
     initChosen:function(){
         $(".select").each(function(){
             $(this).chosen();

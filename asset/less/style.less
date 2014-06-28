@@ -7,6 +7,9 @@
 html, body {height: 100%}
 
 
+@appBackgroundColor:#F9FAFA;
+@widgetHeadBackgroundColor:#EDF0F0;
+
 body {
   padding:0px;
   margin:0px;
@@ -41,7 +44,7 @@ a:hover {
   width: 99%;
   margin:0px auto;
   .border-radius(4px,0px,0px,4px);
-  background: #FFF;
+  background: @appBackgroundColor;
   height: 100%;
   padding:0px;
   .box-shadow(0px 0px 5px 2px darken(#7F8C8D,5%));
@@ -204,9 +207,9 @@ a:hover {
     height: 40px;
     .border-radius(4px,0px,0px,4px);
     border-bottom:1px solid #D6DEE1;
-    background: #2B4470;
+    background: @widgetHeadBackgroundColor;
     font-weight: bold;
-    color:#FFF;
+    color:#2F323A;
     h6 {
       padding:0px;
       margin:0px;
